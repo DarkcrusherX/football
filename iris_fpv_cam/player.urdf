@@ -1,0 +1,244 @@
+<?xml version="1.0" ?>
+<robot name="iris_fpv_cam">
+  <joint name="iris_fpv_cam__fpv_cam_joint" type="fixed">
+    <parent link="iris_fpv_cam__iris__base_link"/>
+    <child link="iris_fpv_cam__fpv_cam__link"/>
+    <origin rpy="0 0 0" xyz="-0.15897 -0.04405  0.04507"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="0.0" lower="0.0" upper="0.0" velocity="0.0"/>
+  </joint>
+  <joint name="iris_fpv_cam__bat_joint" type="ball">
+    <parent link="iris_fpv_cam__iris__base_link"/>
+    <child link="iris_fpv_cam__bat"/>
+    <origin rpy="0 0 0" xyz="0   0  -0.5"/>
+    <axis xyz="0 0 0"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <link name="iris_fpv_cam__bat">
+    <inertial>
+      <mass value=".5"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.000208" ixy="0" ixz="0" iyy="0.04177" iyz="0" izz="0.04177"/>
+    </inertial>
+    <collision name="iris_fpv_cam__bat_collision">
+      <origin rpy="0 0 0" xyz="0   0  -0.5"/>
+      <geometry>
+        <box size=".05 .05 1"/>
+      </geometry>
+    </collision>
+    <visual name="iris_fpv_cam__bat_visual">
+      <origin rpy="0 0 0" xyz="0   0  -0.5"/>
+      <geometry>
+        <box size=".05 .05 1"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="iris_fpv_cam__iris__iris/range_joint" type="fixed">
+    <parent link="iris_fpv_cam__iris__base_link"/>
+    <child link="iris_fpv_cam__iris__iris/range_link"/>
+    <origin rpy="0 0 0" xyz="0      0      0.19492"/>
+    <axis xyz="0 0 0"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="iris_fpv_cam__iris__iris/ground_truth/odometry_sensorgt_joint" type="fixed">
+    <parent link="iris_fpv_cam__iris__base_link"/>
+    <child link="iris_fpv_cam__iris__iris/ground_truth/odometry_sensorgt_link"/>
+    <origin rpy="0 0 0" xyz="0      0      0.19492"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="0.0" lower="0.0" upper="0.0" velocity="0.0"/>
+  </joint>
+  <joint name="iris_fpv_cam__iris__iris/imu_joint" type="fixed">
+    <parent link="iris_fpv_cam__iris__base_link"/>
+    <child link="iris_fpv_cam__iris__iris/imu_link"/>
+    <origin rpy="0 0 0" xyz="0      0      0.19492"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="0.0" lower="0.0" upper="0.0" velocity="0.0"/>
+  </joint>
+  <joint name="iris_fpv_cam__iris__rotor_0_joint" type="revolute">
+    <parent link="iris_fpv_cam__iris__base_link"/>
+    <child link="iris_fpv_cam__iris__rotor_0"/>
+    <origin rpy="0 0 0" xyz="0.13    -0.22     0.21792"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="0.0" lower="-1e+16" upper="1e+16" velocity="0.0"/>
+  </joint>
+  <joint name="iris_fpv_cam__iris__rotor_1_joint" type="revolute">
+    <parent link="iris_fpv_cam__iris__base_link"/>
+    <child link="iris_fpv_cam__iris__rotor_1"/>
+    <origin rpy="0 0 0" xyz="-0.13     0.2      0.21792"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="0.0" lower="-1e+16" upper="1e+16" velocity="0.0"/>
+  </joint>
+  <joint name="iris_fpv_cam__iris__rotor_2_joint" type="revolute">
+    <parent link="iris_fpv_cam__iris__base_link"/>
+    <child link="iris_fpv_cam__iris__rotor_2"/>
+    <origin rpy="0 0 0" xyz="0.13    0.22    0.21792"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="0.0" lower="-1e+16" upper="1e+16" velocity="0.0"/>
+  </joint>
+  <joint name="iris_fpv_cam__iris__rotor_3_joint" type="revolute">
+    <parent link="iris_fpv_cam__iris__base_link"/>
+    <child link="iris_fpv_cam__iris__rotor_3"/>
+    <origin rpy="0 0 0" xyz="-0.13    -0.2      0.21792"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="0.0" lower="-1e+16" upper="1e+16" velocity="0.0"/>
+  </joint>
+  <link name="iris_fpv_cam__iris__base_link">
+    <inertial>
+      <mass value="1.5"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.008" ixy="0" ixz="0" iyy="0.015" iyz="0" izz="0.017"/>
+    </inertial>
+    <collision name="iris_fpv_cam__iris__base_link_collision">
+      <origin rpy="0 0 0" xyz="0      0      0.11492"/>
+      <geometry>
+        <box size="0.47 0.47 0.23"/>
+      </geometry>
+    </collision>
+    <visual name="iris_fpv_cam__iris__base_link_visual">
+      <origin rpy="0 0 0" xyz="0      0      0.19492"/>
+      <geometry>
+        <mesh filename="package://quad_description/meshes/iris.dae" scale="1.0 1.0 1.0"/>
+      </geometry>
+    </visual>
+    <visual name="iris_fpv_cam__iris__front_left_leg_visual">
+      <origin rpy="0 0 0" xyz="0.123   0.22    0.08492"/>
+      <geometry>
+        <cylinder length="0.17" radius="0.005"/>
+      </geometry>
+    </visual>
+    <visual name="iris_fpv_cam__iris__front_right_leg_visual">
+      <origin rpy="0 0 0" xyz="0.123   -0.22     0.08492"/>
+      <geometry>
+        <cylinder length="0.17" radius="0.005"/>
+      </geometry>
+    </visual>
+    <visual name="iris_fpv_cam__iris__rear_left_leg_visual">
+      <origin rpy="0 0 0" xyz="-0.14     0.21     0.08492"/>
+      <geometry>
+        <cylinder length="0.17" radius="0.005"/>
+      </geometry>
+    </visual>
+    <visual name="iris_fpv_cam__iris__rear_right_leg_visual">
+      <origin rpy="0 0 0" xyz="-0.14    -0.21     0.08492"/>
+      <geometry>
+        <cylinder length="0.17" radius="0.005"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="iris_fpv_cam__iris__iris/range_link">
+    <inertial>
+      <mass value="0.15"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0002" iyz="0" izz="0.0002"/>
+    </inertial>
+  </link>
+  <link name="iris_fpv_cam__iris__iris/ground_truth/odometry_sensorgt_link">
+    <inertial>
+      <mass value="0.15"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0002" iyz="0" izz="0.0002"/>
+    </inertial>
+  </link>
+  <link name="iris_fpv_cam__iris__iris/imu_link">
+    <inertial>
+      <mass value="0.15"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.00001" ixy="0" ixz="0" iyy="0.00002" iyz="0" izz="0.00002"/>
+    </inertial>
+  </link>
+  <link name="iris_fpv_cam__iris__rotor_0">
+    <inertial>
+      <mass value="0.025"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="9.75e-06" ixy="0" ixz="0" iyy="0.000166704" iyz="0" izz="0.000167604"/>
+    </inertial>
+    <collision name="iris_fpv_cam__iris__rotor_0_collision">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.005" radius="0.1"/>
+      </geometry>
+    </collision>
+    <visual name="iris_fpv_cam__iris__rotor_0_visual">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://quad_description/meshes/iris_prop_ccw.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="iris_fpv_cam__iris__rotor_1">
+    <inertial>
+      <mass value="0.025"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="9.75e-06" ixy="0" ixz="0" iyy="0.000166704" iyz="0" izz="0.000167604"/>
+    </inertial>
+    <collision name="iris_fpv_cam__iris__rotor_1_collision">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.005" radius="0.1"/>
+      </geometry>
+    </collision>
+    <visual name="iris_fpv_cam__iris__rotor_1_visual">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://quad_description/meshes/iris_prop_ccw.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="iris_fpv_cam__iris__rotor_2">
+    <inertial>
+      <mass value="0.025"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="9.75e-06" ixy="0" ixz="0" iyy="0.000166704" iyz="0" izz="0.000167604"/>
+    </inertial>
+    <collision name="iris_fpv_cam__iris__rotor_2_collision">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.005" radius="0.1"/>
+      </geometry>
+    </collision>
+    <visual name="iris_fpv_cam__iris__rotor_2_visual">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://quad_description/meshes/iris_prop_cw.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="iris_fpv_cam__iris__rotor_3">
+    <inertial>
+      <mass value="0.025"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="9.75e-06" ixy="0" ixz="0" iyy="0.000166704" iyz="0" izz="0.000167604"/>
+    </inertial>
+    <collision name="iris_fpv_cam__iris__rotor_3_collision">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.005" radius="0.1"/>
+      </geometry>
+    </collision>
+    <visual name="iris_fpv_cam__iris__rotor_3_visual">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://quad_description/meshes/iris_prop_cw.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="iris_fpv_cam__fpv_cam__link">
+    <inertial>
+      <mass value="0.015"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="4.15e-6" ixy="0" ixz="0" iyy="2.407e-6" iyz="0" izz="2.407e-6"/>
+    </inertial>
+    <collision name="iris_fpv_cam__fpv_cam__collision">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
+    <visual name="iris_fpv_cam__fpv_cam__visual">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </visual>
+  </link>
+</robot>

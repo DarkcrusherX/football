@@ -1,0 +1,69 @@
+<?xml version='1.0'?>
+<sdf version='1.5'>
+  <model name='iris_fpv_cam'>
+
+    <include>
+      <uri>model://iris</uri>
+    </include>
+
+    <include>
+      <uri>model://fpv_cam</uri>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+    <joint name="fpv_cam_joint" type="fixed">
+      <child>fpv_cam::link</child>
+      <parent>iris::base_link</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <upper>0</upper>
+          <lower>0</lower>
+        </limit>
+      </axis>
+    </joint>
+    <link name='bat'>
+      <pose frame=''>0 0 -0.5 0 0 0</pose>
+      <inertial>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <mass>.5</mass>
+        <inertia>
+          <ixx>0.000208</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.04177</iyy>
+          <iyz>0</iyz>
+          <izz>0.04177</izz>
+        </inertia>
+      </inertial>
+
+      <collision name='bat_collision'>
+        <geometry>
+          <box>
+            <size>.05 .05 1</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name='bat_visual'>
+        <geometry>
+          <box>
+            <size>.05 .05 1</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>  
+    <joint name='bat_joint' type='ball'>
+      <pose frame=''>0 0 0.5 0 0 0</pose>
+      <child>bat</child>
+      <parent>iris::base_link</parent>
+      <axis1>1 0 0</axis1>
+      <axis2>0 1 0</axis2>
+
+      <lowStop1>0</lowStop1>
+      <highStop1>30</highStop1>
+      <lowStop2>0</lowStop2>
+      <highStop2>30</highStop2>     
+    </joint>
+
+  </model>
+</sdf>
