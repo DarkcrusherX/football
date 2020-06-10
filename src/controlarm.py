@@ -22,7 +22,7 @@ class batlink():
       self.links = link_msg
       self.j = 5
       i=0
-      while self.links.name[i] != 'iris::bat':
+      while self.links.name[i] != name:
         i=i+1
 
       self.current_pose = self.links.pose[i]

@@ -15,7 +15,7 @@ upper2 = np.array([180, 255, 255])
 bridge0 = CvBridge()
 rospy.init_node('detection0', anonymous=True)
 
-publish_mid = rospy.Publisher('/player0/midpoint', PoseStamped,queue_size=20)
+publish_mid = rospy.Publisher('/player0/midpoint', PoseStamped,queue_size=5)
 midpoint = PoseStamped()
 def show_image(img):
   midpoint = PoseStamped()
