@@ -4,7 +4,7 @@ from gazebo_msgs.msg import LinkStates
 from geometry_msgs.msg import Pose
 from geometry_msgs.msg import Twist 
 
-rospy.init_node('test', anonymous=True)
+#rospy.init_node('test', anonymous=True)
 
 class batlink():
 
